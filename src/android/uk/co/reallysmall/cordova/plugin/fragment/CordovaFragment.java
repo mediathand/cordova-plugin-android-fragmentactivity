@@ -270,6 +270,18 @@ public class CordovaFragment extends Fragment {
         appView.loadUrlIntoView(url, true);
     }
 
+    @Override
+    public void onPause() {
+        super.onPause();
+        LOG.d(TAG, "Paused the activity.");
+
+        if (this.appView == null) {
+            return;
+        }
+
+        this.appView.handlePause(this.keepRunning);
+    }
+
     /**
      * Called when the activity will start interacting with the user.
      */
