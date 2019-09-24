@@ -6,7 +6,9 @@
   <keywords>cordova, fragment, fragments</keywords>
   <platform name="android">
 
-    <framework src="com.android.support:appcompat-v7:18.0.+"/>
+    <dependency id="cordova-plugin-androidx" version="^1.0.2" />
+    <framework src="androidx.appcompat:appcompat:1+"/>
+
     <config-file target="res/xml/config.xml" parent="/*">
       <feature name="CordovaFragments">
         <param name="android-package" value="uk.co.reallysmall.cordova.plugin.fragment"/>
