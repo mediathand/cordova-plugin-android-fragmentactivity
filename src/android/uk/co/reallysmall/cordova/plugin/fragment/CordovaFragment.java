@@ -26,7 +26,6 @@ import android.graphics.Color;
 import android.media.AudioManager;
 import android.net.http.SslError;
 import android.os.Bundle;
-import android.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -57,6 +56,8 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.Locale;
+
+import androidx.fragment.app.Fragment;
 
 /**
  * This class is the main Android activity that represents the Cordova

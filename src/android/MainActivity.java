@@ -21,11 +21,11 @@ package ${mypackage};
 
 /** extends CordovaActivity */
 
-import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentTransaction;
 
 public class MainActivity extends FragmentActivity
 {
@@ -40,7 +40,7 @@ public class MainActivity extends FragmentActivity
         super.onCreate(savedInstanceState);
 
         currentFragment = new uk.co.reallysmall.cordova.plugin.fragment.CordovaFragment();
-        FragmentTransaction ft = getFragmentManager().beginTransaction();
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         ft.add(android.R.id.content, currentFragment);
         ft.commit();
     }
