@@ -26,6 +26,7 @@ import android.graphics.Color;
 import android.media.AudioManager;
 import android.net.http.SslError;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -97,6 +98,7 @@ public class CordovaFragment extends Fragment {
     // The webview for our app
     protected CordovaWebView appView;
 
+    final Handler mHandler = new Handler();
 
     public CordovaWebView getAppView() {
         return appView;
@@ -113,24 +115,31 @@ public class CordovaFragment extends Fragment {
     protected ArrayList<PluginEntry> pluginEntries;
     protected CordovaInterfaceImpl cordovaInterface;
 
-    private View contentView;
+    private FrameLayout contentView;
 
     public View getContentView() {
         return contentView;
     }
 
     public void setContentView(View contentView) {
-        FrameLayout frame = new FrameLayout(this.getActivity().getBaseContext());
-        frame.addView(contentView);
-        this.contentView = frame;
+        this.contentView.removeAllViews();
+        this.contentView.addView(contentView);
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         if(contentView == null){
-            init();
+            this.contentView = new FrameLayout(this.getActivity().getBaseContext());
         }
-        loadUrl(launchUrl);
+
+        // Defer load / init until this method has returned, since the result can be needed by plugin initializers
+
+        mHandler.post(new Runnable() {
+            public void run() {
+                loadUrl(launchUrl);
+            }
+        });
+
         return contentView;
     }
 
