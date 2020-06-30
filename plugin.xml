@@ -6,7 +6,6 @@
   <keywords>cordova, fragment, fragments</keywords>
   <platform name="android">
 
-    <dependency id="cordova-plugin-androidx" version="^1.0.2" />
     <framework src="androidx.appcompat:appcompat:1+"/>
 
     <config-file target="res/xml/config.xml" parent="/*">
